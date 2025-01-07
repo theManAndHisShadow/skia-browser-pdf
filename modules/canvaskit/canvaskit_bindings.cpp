@@ -1,5 +1,6 @@
 /*
  * Copyright 2018 Google LLC
+ * Changes and patches by https://github.com/theManAndHisShadow
  *
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -1225,6 +1226,16 @@ EMSCRIPTEN_BINDINGS(Skia) {
         .function("_clipRect", optional_override([](SkCanvas& self, WASMPointerF32 fPtr, SkClipOp op, bool doAntiAlias) {
             const SkRect* rect = reinterpret_cast<const SkRect*>(fPtr);
             self.clipRect(*rect, op, doAntiAlias);
+        }))
+        .function("getSizes", optional_override([](SkCanvas& self) {
+            SkRect bounds = self.getLocalClipBounds(); // Получаем границы холста
+
+            // Создаём JS-объект с полями width и height
+            emscripten::val result = emscripten::val::object();
+            result.set("width", bounds.width());
+            result.set("height", bounds.height());
+                
+            return result; // Возвращаем JS-объект
         }))
         .function("_concat", optional_override([](SkCanvas& self, WASMPointerF32 mPtr) {
             //TODO(skbug.com/10108): make the JS side be column major.
