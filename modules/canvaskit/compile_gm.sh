@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copyright 2020 Google LLC
+# Changes and patches by https://github.com/theManAndHisShadow
 #
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -121,7 +122,7 @@ echo "Compiling bitcode"
   skia_enable_svg=true \
   skia_enable_skshaper=true \
   skia_enable_skparagraph=true \
-  skia_enable_pdf=false"
+  skia_enable_pdf=true"
 
 # Build all the libs we will need below
 parse_targets() {

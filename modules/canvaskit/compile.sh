@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copyright 2018 Google LLC
+# Changes and patches by https://github.com/theManAndHisShadow
 #
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -68,7 +69,7 @@ if [[ $@ == *no_effects_deserialization* ]]; then
   DESERIALIZE_EFFECTS="false"
 fi
 
-ENABLE_SKOTTIE="true"
+ENABLE_SKOTTIE="false"
 if [[ $@ == *no_skottie* ]]; then
   echo "Omitting Skottie"
   ENABLE_SKOTTIE="false"
@@ -244,7 +245,7 @@ echo "Compiling"
   \
   skia_enable_skshaper=true \
   skia_enable_skparagraph=true \
-  skia_enable_pdf=false \
+  skia_enable_pdf=true \
   skia_canvaskit_enable_rt_shader=true \
   skia_canvaskit_force_tracing=${FORCE_TRACING} \
   skia_canvaskit_profile_build=${PROFILE_BUILD} \
