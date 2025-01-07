@@ -119,6 +119,7 @@ skia_wasm_lib("canvaskit") {
   sources = [
     "WasmCommon.h",
     "canvaskit_bindings.cpp",
+    "canvaskit_extended_bindings.cpp",
   ]
   if (skia_canvaskit_enable_paragraph) {
     sources += [
